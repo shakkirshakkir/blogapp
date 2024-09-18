@@ -1,0 +1,65 @@
+{% extends 'navbar.html' %}
+{% block nav %}
+<style>
+  body {
+    background-image: url('https://media.gettyimages.com/id/1695075178/photo/apples-new-iphone-15-goes-on-sale.jpg?s=2048x2048&w=gi&k=20&c=exyoGLl4NlmimjSZCbgPA0UjEgzYfYLzj7tsL-ZSXfk='); /* Replace with your image path */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    font-family: Arial, sans-serif; /* Optional: Set a default font family */
+  }
+
+  .update-heading {
+    background-color: #007bff; /* Primary blue background color */
+    color: #ffffff; /* White text color */
+    padding: 10px 20px; /* Padding around the heading */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Bottom margin */
+    text-align: center; /* Center align text */
+  }
+
+  .form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for form */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1); /* Soft shadow effect */
+  }
+
+  .alert {
+    margin-bottom: 20px;
+  }
+
+  .btn-submit {
+    width: 100%; /* Full width button */
+    margin-top: 20px; /* Top margin */
+  }
+</style>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="update-heading">Update</h1>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <div class="form-container">
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success btn-submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock nav %}

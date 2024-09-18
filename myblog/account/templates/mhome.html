@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    body {
+      background-image: url('https://media.gettyimages.com/id/1695075178/photo/apples-new-iphone-15-goes-on-sale.jpg?s=2048x2048&w=gi&k=20&c=exyoGLl4NlmimjSZCbgPA0UjEgzYfYLzj7tsL-ZSXfk='); /* Replace with your background image path */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Ensures the background image stays fixed as the page scrolls */
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .custom-header {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for better text readability */
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .custom-buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .custom-buttons a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      border-radius: 20px; /* Rounded corners */
+      background-color: #17a2b8; /* Custom background color */
+      color: #fff; /* Text color */
+      border: 2px solid #17a2b8; /* Border color */
+    }
+
+    .custom-buttons a:hover {
+      background-color: #138496; /* Darker background color on hover */
+      border-color: #138496; /* Darker border color on hover */
+    }
+
+    .custom-message {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="custom-header">
+      <h1 class="text-light">My Blog</h1>
+    </div>
+
+    <div class="custom-buttons">
+      <a href="{% url 'reg' %}" class="btn btn-outline-success">Sign Up</a>
+      <a href="{% url 'log' %}" class="btn btn-outline-success">Sign In</a>
+    </div>
+
+    {% if messages %}
+      <div class="custom-message">
+        {% for message in messages %}
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ message }}
+            </div>
+          {% endif %}
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ message }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Bootstrap JS and dependencies (if needed) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="

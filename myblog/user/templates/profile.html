@@ -1,0 +1,97 @@
+
+ {% extends 'navbar.html' %}
+{% block nav %} 
+
+<style>
+   body {
+    background-image: url('https://wallpapers.com/images/high/pastel-blue-solid-g1ijfov34r9j7ue9.webp'); /* Replace with your image path */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    font-family: Arial, sans-serif; /* Optional: Set a default font family */
+  }
+
+  .profile-heading {
+    background-color: #343a40; /* Dark background for profile heading */
+    color: #ffffff; /* White text color */
+    padding: 10px 20px; /* Padding around the heading */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Bottom margin */
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for cards */
+    border: none; /* Remove border */
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1); /* Soft shadow effect */
+  }
+
+  .card-img-top {
+    object-fit: cover; /* Ensure the image covers the entire area */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .card-body {
+    text-align: center; /* Center align text in card body */
+  }
+
+  .list-group-item {
+    border: none; /* Remove border from list items */
+  }
+
+  .profile-actions {
+    border-left: 2px solid #343a40; /* Dark border on the left for actions column */
+    height: 500px; /* Set a fixed height for the actions column */
+    padding: 20px; /* Padding inside the actions column */
+  }
+
+  .profile-actions a {
+    display: block;
+    margin-bottom: 10px; /* Bottom margin between action buttons */
+  }
+</style>
+
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <h2 class="profile-heading">Profile</h2>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        
+        <img class="card-img-top" height="250px" src="{{ request.user.user.profile_pic.url }}" alt="Profile Picture">
+        <div class="card-body">
+          <h5 class="card-title"><b>{{ request.user.first_name }} {{ request.user.last_name }}</b></h5>
+          <p class="card-text"><b>DOB:</b> {{ request.user.user.dob }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>EMAIL:</b> {{ request.user.email }}</li>
+          <li class="list-group-item"><b>GENDER:</b> {{ request.user.user.gender }}</li>
+          <li class="list-group-item"><b>PHONE: </b>{{ request.user.user.phone }}</li>
+          <!-- <li class="list-group-item"><b>FOLLOWERS: </b>{{ request.user.user.follower }}</li> -->
+
+          </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="profile-actions">
+        {% if request.user.user %}
+          <a href="{% url 'epv' request.user.user.id %}" class="btn btn-info">Edit Profile</a>
+          <a href="{% url 'cpw' %}" class="btn btn-warning">Change Password</a>
+        {% else %}
+          <a href="{% url 'addpro' %}" class="btn btn-danger">Add Profile</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock nav %}

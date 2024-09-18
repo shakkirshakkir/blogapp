@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <ul class="nav bg-info">
+      {% if request.user.user %}
+      <a href="{% url 'uh' %}"><img src="{{request.user.user.profile_pic.url}}" class="rounded-circle" height="50px" width="50px" alt=""></a>
+      {%endif%}
+        <li class="nav-item"><a href="{% url 'pro'%}" class="nav-link text-light">My Profile</a></li>
+        <li class="nav-item"><a href="{% url 'lgout'%}" class="nav-link text-danger">Logout</a></li>
+        <li class="nav-item"><a href="{% url 'mb'%}" class="nav-link text-danger">Myblog</a></li>
+    </ul>
+    {% block nav %}
+    {% endblock nav %}
+      
+  </body>
+</html>

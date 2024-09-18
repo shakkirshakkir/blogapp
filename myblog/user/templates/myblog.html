@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blogs</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <style>
+    body {
+      background-image: url('https://media.gettyimages.com/id/1695075178/photo/apples-new-iphone-15-goes-on-sale.jpg?s=2048x2048&w=gi&k=20&c=exyoGLl4NlmimjSZCbgPA0UjEgzYfYLzj7tsL-ZSXfk=');
+      background-size: cover; /* Cover the entire background */
+      background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Do not repeat the background image */
+      background-attachment: fixed; /* Fix the background image */
+      font-family: Arial, sans-serif; /* Optional: Set a default font family */
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.7); /* Dark background with opacity for navbar */
+    }
+
+    .navbar-brand,
+    .navbar-nav .nav-link {
+      color: #ffffff; /* White text color for navbar links */
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for cards */
+      border: none; /* Remove border from cards */
+      transition: transform 0.2s ease; /* Smooth scale transition on hover */
+      margin-bottom: 20px; /* Add margin bottom between cards */
+    }
+
+    .card:hover {
+      transform: scale(1.02); /* Scale up slightly on hover */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+    }
+
+    .card-header {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for card headers */
+      border-bottom: 1px solid #dee2e6; /* Light border at bottom of card header */
+    }
+
+    .card-footer {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for card footer */
+      border-top: 1px solid #dee2e6; /* Light border at top of card footer */
+      text-align: right; /* Align delete button to the right */
+    }
+
+    .page-title {
+      background-color: rgba(0, 123, 255, 0.8); /* Semi-transparent blue background for title */
+      color: #ffffff; /* White text color */
+      padding: 15px; /* Padding around the text */
+      text-align: center; /* Center align text */
+      border-radius: 10px; /* Rounded corners */
+      margin-bottom: 20px; /* Bottom margin */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">My Blog App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'uh' %}">Home <span class="sr-only">(current)</span></a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'mb' %}">MyProfile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lgout' %}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container mt-4">
+    <h1 class="page-title">My Blogs</h1>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-10">
+        {% for i in data %}
+        <div class="card mt-3">
+          <div class="card-header">
+            {{ i.date }}
+          </div>
+          {% if i.image %}
+          <img class="card-img-top" src="{{ i.image.url }}" height="200px" alt="Card image cap">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">{{ i.desc }}</p>
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'db' i.id %}" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-2">
+        <!-- Sidebar or additional content -->
+        <h5>Post Blogs</h5>
+        <!-- Form or link to post blogs -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+    integrity="sha384-HyQj/CNVTU3Uq6IXOBBHL+lFKxO5xYflttT3y8ANp0DJ7y+TK6+uHmNiC0vbJqA+"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+pbzxdqDTE1Eo5cWAZ4ZSN0GmGv1kXU0M2J"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

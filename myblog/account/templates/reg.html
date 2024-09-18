@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sign Up</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    body {
+      background-image: url('https://media.gettyimages.com/id/1695075178/photo/apples-new-iphone-15-goes-on-sale.jpg?s=2048x2048&w=gi&k=20&c=exyoGLl4NlmimjSZCbgPA0UjEgzYfYLzj7tsL-ZSXfk='); /* Replace with your background image path */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Ensures the background image stays fixed as the page scrolls */
+      color: #fff; /* Text color */
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full viewport height */
+    }
+
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for form */
+      padding: 30px;
+      border-radius: 10px; /* Rounded corners */
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .alert {
+      position: relative;
+      animation: fade 0.5s ease;
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-success {
+      background-color: #28a745; /* Green register button */
+      border: none;
+    }
+
+    .btn-success:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Sign Up</h1>
+
+    {% if form.errors %}
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Error!</strong> Please correct the errors below.
+      </div>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+      </div>
+      <div class="form-group">
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+      </div>
+      <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+      <div class="form-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <div class="form-group">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+      </div>
+      <div class="form-group">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+      </div>
+
+      <button type="submit" class="btn btn-success btn-block">Register</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (if needed) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

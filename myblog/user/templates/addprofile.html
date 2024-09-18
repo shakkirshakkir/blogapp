@@ -1,0 +1,16 @@
+ {% extends 'navbar.html' %}
+{%block nav%}
+<h3>Add Profile</h3>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {{form.as_p}}
+    <tr>
+    <td colspan="2" class="text-center">
+    
+    
+    <button class="btn btn-success">Add</button>
+    </td>
+    </tr>
+</form>
+{%endblock nav%} 

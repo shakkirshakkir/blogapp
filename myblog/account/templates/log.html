@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    body {
+      background-image: url('https://media.gettyimages.com/id/1695075178/photo/apples-new-iphone-15-goes-on-sale.jpg?s=2048x2048&w=gi&k=20&c=exyoGLl4NlmimjSZCbgPA0UjEgzYfYLzj7tsL-ZSXfk='); /* Replace with your background image path */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Ensures the background image stays fixed as the page scrolls */
+      color: #fff; /* Text color */
+    }
+
+    .container {
+      padding: 20px;
+      margin-top: 50px; /* Adjust top margin for spacing */
+    }
+
+    .custom-header {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for better text readability */
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .custom-form {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for form */
+      padding: 20px;
+      border-radius: 10px; /* Rounded corners for form */
+    }
+
+    .custom-form .form-control {
+      background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background for inputs */
+      border: none;
+      border-bottom: 2px solid #fff; /* White bottom border */
+      color: #fff; /* Text color */
+      border-radius: 0; /* No border-radius */
+      transition: border-color 0.3s; /* Smooth transition for border color */
+    }
+
+    .custom-form .form-control::placeholder {
+      color: #ddd; /* Placeholder text color */
+    }
+
+    .custom-form .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.3); /* Lighter background on focus */
+      border-color: #28a745; /* Green border color on focus */
+    }
+
+    .custom-form label {
+      color: #ccc; /* Label text color */
+    }
+
+    .custom-form .btn-success {
+      background-color: #28a745; /* Green login button */
+      border: none;
+      border-radius: 20px; /* Rounded corners for button */
+      padding: 12px 24px; /* Padding inside button */
+      font-weight: bold; /* Bold button text */
+      letter-spacing: 1px; /* Increased letter spacing */
+      transition: background-color 0.3s; /* Smooth transition for background color */
+    }
+
+    .custom-form .btn-success:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+
+    .custom-alert {
+      margin-top: 20px;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    .register-link a {
+      color: #ffc107; /* Yellow link color */
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="custom-header">User Login</h1>
+
+    {% if messages %}
+      <div class="custom-alert">
+        {% for message in messages %}
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ message }}
+            </div>
+          {% endif %}
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ message }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="custom-form">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_username">Username</label>
+          <input type="text" class="form-control" id="id_username" name="username" placeholder="Enter username" required>
+        </div>
+        <div class="form-group">
+          <label for="id_password">Password</label>
+          <input type="password" class="form-control" id="id_password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Login</button>
+      </form>
+
+      <div class="register-link">
+        <p>Don't have an account? <a href="{% url 'reg' %}">Register here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies (if needed) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
